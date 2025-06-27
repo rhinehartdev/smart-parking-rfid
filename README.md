@@ -42,7 +42,7 @@ The system was tested for:
 
 ---
 
-## 🗂️ Project Structure
+## 📁 Project Structure
 
 📁 RFID-Parking-Lot/
 ├── CHECK_IN_OUT.ino ← ESP32 check-in/out logic
@@ -69,7 +69,6 @@ RFID Communication Handler
 ├── rfid-data.php ← Handles POST data from ESP32
 ├── rfid-display.php ← Displays current scans
 
----
 
 ## 🚀 How to Run This Project
 
