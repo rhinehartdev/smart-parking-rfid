@@ -85,10 +85,9 @@ RFID Communication Handler
 ## 👨‍💻 Developer Info
 
 **Main Programmer:** Rhinehart Dejucos  
-**GitHub Profile:** [@yourusername](https://github.com/yourusername)
+**GitHub Profile:** [@rhinehartdev](https://github.com/rhinehartdev)
 
 > This system was commissioned as a complete RFID-based smart parking solution using IoT and local web technology.
-
 ---
 
 ## 📝 License
