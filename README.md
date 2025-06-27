@@ -44,3 +44,57 @@ The system was tested for:
 
 ## 🗂️ Project Structure
 
+📁 RFID-Parking-Lot/
+├── CHECK_IN_OUT.ino ← ESP32 check-in/out logic
+├── RFID_SCAN.ino ← RFID scan and send to server
+├── parking_lot_db.sql ← MySQL database structure
+
+Web Interface and Server Files
+├── index.php ← Landing/login page
+├── index_web.php ← Main dashboard UI
+├── login.php / login_user.php ← Login logic
+├── logout.php ← Logout script
+├── dashboard.php ← Dashboard routing
+├── style.css ← Page styling
+
+Registration & User Management
+├── register.php / register_user.php
+├── edit_registration.php
+├── update_registration.php
+├── delete_registration.php
+├── view_registrations.html
+├── fetch_registrations.php
+
+RFID Communication Handler
+├── rfid-data.php ← Handles POST data from ESP32
+├── rfid-display.php ← Displays current scans
+
+---
+
+## 🚀 How to Run This Project
+
+1. 📦 Install and start **XAMPP** (Apache + MySQL)
+2. 🗃️ Import `parking_lot_db.sql` into **phpMyAdmin**
+3. 📁 Place all files in the `htdocs/` directory inside your XAMPP folder
+4. 🖥️ Visit `http://localhost/index.php` to use the system
+5. 📡 Connect your ESP32 to the same Wi-Fi network and upload `.ino` files via Arduino IDE
+6. 🔗 Make sure to update your ESP32 IP target in the `.ino` files to match the server IP
+
+---
+
+## 👨‍💻 Developer Info
+
+**Main Programmer:** Rhinehart Dejucos  
+**GitHub Profile:** [@yourusername](https://github.com/yourusername)
+
+> This system was commissioned as a complete RFID-based smart parking solution using IoT and local web technology.
+
+---
+
+## 📝 License
+
+This project was commissioned and is provided for educational and portfolio demonstration purposes.
+
+---
+
+
