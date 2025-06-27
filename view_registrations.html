@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Registrations</title>
+    <link rel="stylesheet" href="style.css"> <!-- Link to your CSS file -->
+    <style>
+        /* Global styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* Header styles */
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Main content styles */
+        main {
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        /* Table styles */
+        table {
+            width: 1500px;
+            height: 1000px;
+            border-collapse: collapse;
+            margin-top: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: white;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        /* Action button styles */
+        .edit-btn, .delete-btn {
+            padding: 3px 8px; /* Reduced padding for smaller buttons */
+            font-size: 14px; /* Smaller font size */
+            border-radius: 4px; /* Slightly less rounding */
+            cursor: pointer;
+            color: white;
+            border: none;
+            margin-right: 5px; /* Added margin to prevent overlap */
+        }
+
+        .edit-btn {
+            background-color: #28a745;
+        }
+
+        .delete-btn {
+            background-color: #dc3545;
+        }
+
+        .edit-btn:hover {
+            background-color: #218838;
+        }
+
+        .delete-btn:hover {
+            background-color: #c82333;
+        }
+
+        /* Back link styles */
+        .back-link {
+            display: block;
+            margin: 20px 0;
+            text-align: center;
+            text-decoration: none;
+            color: #007bff; /* Text color */
+            padding: 10px 15px; /* Padding for button look */
+            border: 1px solid #007bff; /* Border color */
+            border-radius: 5px; /* Rounded corners */
+            transition: background-color 0.3s ease; /* Transition effect */
+        }
+
+        .back-link:hover {
+            background-color: #007bff; /* Background color on hover */
+            color: white; /* Text color on hover */
+        }
+
+        /* Filter styles */
+        .filter-container {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .filter-select {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Registered Users</h1>
+    </header>
+
+    <main>
+        <!-- Filter for vehicle types -->
+        <div class="filter-container">
+            <label for="vehicleType" style="margin-right: 10px;">Filter by Vehicle Type:</label>
+            <select id="vehicleType" class="filter-select" onchange="fetchRegistrations()">
+                <option value="all">All</option>
+                <option value="two-wheeler">Two-Wheeler</option>
+                <option value="three-wheeler">Three-Wheeler</option>
+                <option value="four-wheeler">Four-Wheeler</option>
+            </select>
+        </div>
+
+        <!-- Table to display registered users -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>RFID Tag</th>
+                    <th>Vehicle Type</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="registrations-table">
+                <!-- Data will be populated here -->
+            </tbody>
+        </table>
+
+        <a class="back-link" href="index_web.php">Back to Registration Form</a>
+    </main>
+
+    <script>
+        // Function to fetch registrations and populate the table
+        async function fetchRegistrations() {
+            const vehicleType = document.getElementById('vehicleType').value;
+
+            try {
+                const response = await fetch(`fetch_registrations.php?vehicle_type=${vehicleType}`);
+                const data = await response.text();
+                
+                // Populate the table body with the fetched data
+                document.getElementById('registrations-table').innerHTML = data;
+            } catch (error) {
+                console.error('Error fetching registrations:', error);
+            }
+        }
+
+        // Call the function to fetch registrations when the page loads
+        window.onload = fetchRegistrations;
+    </script>
+
+</body>
+</html>
